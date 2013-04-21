@@ -30,11 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(urduWordProcessor));
+            DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling1 = new DevExpress.XtraSpellChecker.OptionsSpelling();
+            DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
+            DevExpress.XtraSpellChecker.SpellCheckerCustomDictionary spellCheckerCustomDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerCustomDictionary();
+            DevExpress.XtraSpellChecker.SpellCheckerCustomDictionary spellCheckerCustomDictionary2 = new DevExpress.XtraSpellChecker.SpellCheckerCustomDictionary();
             this.navbarImageListLarge = new System.Windows.Forms.ImageList(this.components);
             this.navbarImageList = new System.Windows.Forms.ImageList(this.components);
             this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.centerTextRibbonBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.spellingsButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemRichTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.newFileRibbonBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -84,12 +91,15 @@
             this.barButtonItemSwitchUILang = new DevExpress.XtraBars.BarButtonItem();
             this.postToFacebookPageRibbonBtn = new DevExpress.XtraBars.BarButtonItem();
             this.facebookLogOutRibbonBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonGroup2 = new DevExpress.XtraBars.BarButtonGroup();
+            this.keyboardSwitchBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.HomeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.formatRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.fontPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.EditingPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.languagePageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.InsertRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -119,14 +129,13 @@
             this.repositoryItemFontEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
             this.repositoryItemFontEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.document = new System.Windows.Forms.RichTextBox();
             this.skinsRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.zoomTrackBarControl1 = new DevExpress.XtraEditors.ZoomTrackBarControl();
-            this.barButtonGroup2 = new DevExpress.XtraBars.BarButtonGroup();
-            this.keyboardPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.keyboardSwitchBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.spellChecker1 = new DevExpress.XtraSpellChecker.SpellChecker();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit3)).BeginInit();
@@ -166,7 +175,9 @@
             // appMenu
             // 
             this.appMenu.ItemLinks.Add(this.centerTextRibbonBtn);
+            this.appMenu.ItemLinks.Add(this.spellingsButtonItem);
             this.appMenu.ItemLinks.Add(this.barButtonItem4);
+            this.appMenu.ItemLinks.Add(this.barEditItem1);
             this.appMenu.Name = "appMenu";
             this.appMenu.Ribbon = this.ribbonControl;
             this.appMenu.ShowRightPane = true;
@@ -178,11 +189,30 @@
             this.centerTextRibbonBtn.ImageIndex = 13;
             this.centerTextRibbonBtn.Name = "centerTextRibbonBtn";
             // 
+            // spellingsButtonItem
+            // 
+            resources.ApplyResources(this.spellingsButtonItem, "spellingsButtonItem");
+            this.spellingsButtonItem.Id = 139;
+            this.spellingsButtonItem.Name = "spellingsButtonItem";
+            this.spellingsButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.spellingsButtonItem_ItemClick);
+            // 
             // barButtonItem4
             // 
             resources.ApplyResources(this.barButtonItem4, "barButtonItem4");
             this.barButtonItem4.Id = 94;
             this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barEditItem1
+            // 
+            resources.ApplyResources(this.barEditItem1, "barEditItem1");
+            this.barEditItem1.Edit = this.repositoryItemRichTextEdit1;
+            this.barEditItem1.Id = 140;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemRichTextEdit1
+            // 
+            this.repositoryItemRichTextEdit1.Name = "repositoryItemRichTextEdit1";
+            this.repositoryItemRichTextEdit1.ShowCaretInReadOnly = false;
             // 
             // ribbonControl
             // 
@@ -242,9 +272,11 @@
             this.postToFacebookPageRibbonBtn,
             this.facebookLogOutRibbonBtn,
             this.barButtonGroup2,
-            this.keyboardSwitchBtn});
+            this.keyboardSwitchBtn,
+            this.spellingsButtonItem,
+            this.barEditItem1});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
-            this.ribbonControl.MaxItemId = 139;
+            this.ribbonControl.MaxItemId = 141;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.aboutRibbonBtn);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -264,7 +296,8 @@
             this.repositoryItemComboBox1,
             this.repositoryItemFontEdit1,
             this.repositoryItemFontEdit2,
-            this.repositoryItemFontEdit3});
+            this.repositoryItemFontEdit3,
+            this.repositoryItemRichTextEdit1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.newFileRibbonBtn);
@@ -659,6 +692,19 @@
             this.facebookLogOutRibbonBtn.Name = "facebookLogOutRibbonBtn";
             this.facebookLogOutRibbonBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFBLogOut_ItemClick);
             // 
+            // barButtonGroup2
+            // 
+            resources.ApplyResources(this.barButtonGroup2, "barButtonGroup2");
+            this.barButtonGroup2.Id = 137;
+            this.barButtonGroup2.Name = "barButtonGroup2";
+            // 
+            // keyboardSwitchBtn
+            // 
+            resources.ApplyResources(this.keyboardSwitchBtn, "keyboardSwitchBtn");
+            this.keyboardSwitchBtn.Id = 138;
+            this.keyboardSwitchBtn.Name = "keyboardSwitchBtn";
+            this.keyboardSwitchBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.keyboardSwitchBtn_ItemClick);
+            // 
             // ribbonImageCollectionLarge
             // 
             resources.ApplyResources(this.ribbonImageCollectionLarge, "ribbonImageCollectionLarge");
@@ -687,7 +733,7 @@
             this.formatRibbonPageGroup,
             this.fontPageGroup,
             this.EditingPageGroup,
-            this.keyboardPageGroup});
+            this.languagePageGroup});
             this.HomeRibbonPage.Name = "HomeRibbonPage";
             resources.ApplyResources(this.HomeRibbonPage, "HomeRibbonPage");
             // 
@@ -720,6 +766,13 @@
             this.EditingPageGroup.ItemLinks.Add(this.barButtonItemReplace);
             this.EditingPageGroup.Name = "EditingPageGroup";
             resources.ApplyResources(this.EditingPageGroup, "EditingPageGroup");
+            // 
+            // languagePageGroup
+            // 
+            this.languagePageGroup.ItemLinks.Add(this.keyboardSwitchBtn);
+            this.languagePageGroup.ItemLinks.Add(this.spellingsButtonItem);
+            this.languagePageGroup.Name = "languagePageGroup";
+            resources.ApplyResources(this.languagePageGroup, "languagePageGroup");
             // 
             // InsertRibbonPage
             // 
@@ -959,17 +1012,24 @@
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             // 
+            // document
+            // 
+            this.document.AcceptsTab = true;
+            resources.ApplyResources(this.document, "document");
+            this.document.AccessibleRole = System.Windows.Forms.AccessibleRole.Document;
+            this.document.AutoWordSelection = true;
+            this.document.EnableAutoDragDrop = true;
+            this.document.Name = "document";
+            this.ribbonControl.SetPopupContextMenu(this.document, this.appMenu);
+            this.spellChecker1.SetShowSpellCheckMenu(this.document, false);
+            this.spellChecker1.SetSpellCheckerOptions(this.document, optionsSpelling1);
+            this.document.TextChanged += new System.EventHandler(this.document_TextChanged);
+            // 
             // skinsRibbonPageGroup
             // 
             this.skinsRibbonPageGroup.Name = "skinsRibbonPageGroup";
             this.skinsRibbonPageGroup.ShowCaptionButton = false;
             resources.ApplyResources(this.skinsRibbonPageGroup, "skinsRibbonPageGroup");
-            // 
-            // richTextBox1
-            // 
-            resources.ApplyResources(this.richTextBox1, "richTextBox1");
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // barButtonItem10
             // 
@@ -985,38 +1045,55 @@
             this.zoomTrackBarControl1.Properties.ScrollThumbStyle = DevExpress.XtraEditors.Repository.ScrollThumbStyle.ArrowDownRight;
             this.zoomTrackBarControl1.EditValueChanged += new System.EventHandler(this.zoomTrackBarControl1_EditValueChanged);
             // 
-            // barButtonGroup2
+            // spellChecker1
             // 
-            resources.ApplyResources(this.barButtonGroup2, "barButtonGroup2");
-            this.barButtonGroup2.Id = 137;
-            this.barButtonGroup2.Name = "barButtonGroup2";
-            // 
-            // keyboardPageGroup
-            // 
-            this.keyboardPageGroup.ItemLinks.Add(this.keyboardSwitchBtn);
-            this.keyboardPageGroup.Name = "keyboardPageGroup";
-            resources.ApplyResources(this.keyboardPageGroup, "keyboardPageGroup");
-            // 
-            // keyboardSwitchBtn
-            // 
-            resources.ApplyResources(this.keyboardSwitchBtn, "keyboardSwitchBtn");
-            this.keyboardSwitchBtn.Id = 138;
-            this.keyboardSwitchBtn.Name = "keyboardSwitchBtn";
-            this.keyboardSwitchBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.keyboardSwitchBtn_ItemClick);
+            this.spellChecker1.CheckAsYouTypeOptions.CheckControlsInParentContainer = true;
+            this.spellChecker1.CheckAsYouTypeOptions.SuggestionCount = 15;
+            this.spellChecker1.CheckAsYouTypeOptions.UnderlineStyle = DevExpress.XtraSpellChecker.UnderlineStyle.Line;
+            this.spellChecker1.Culture = new System.Globalization.CultureInfo("ur-PK");
+            spellCheckerDictionary1.AlphabetPath = "dic\\ur.aff";
+            spellCheckerDictionary1.CacheKey = null;
+            spellCheckerDictionary1.Culture = new System.Globalization.CultureInfo("ur-PK");
+            spellCheckerDictionary1.DictionaryPath = "dic\\ur.dic";
+            spellCheckerDictionary1.Encoding = ((System.Text.Encoding)(resources.GetObject("spellCheckerDictionary1.Encoding")));
+            spellCheckerCustomDictionary1.AlphabetPath = "dic\\ur.aff";
+            spellCheckerCustomDictionary1.CacheKey = null;
+            spellCheckerCustomDictionary1.Culture = new System.Globalization.CultureInfo("");
+            spellCheckerCustomDictionary1.DictionaryPath = "dic\\user.dic";
+            spellCheckerCustomDictionary1.Encoding = ((System.Text.Encoding)(resources.GetObject("spellCheckerCustomDictionary1.Encoding")));
+            spellCheckerCustomDictionary2.AlphabetPath = "C:\\Users\\Syed Tahir Ali Jan\\Documents\\GitHub\\urduwordprocessor\\UrduWordProcessor\\" +
+    "bin\\Debug\\dic\\en-US.aff";
+            spellCheckerCustomDictionary2.CacheKey = null;
+            spellCheckerCustomDictionary2.Culture = new System.Globalization.CultureInfo("en-US");
+            spellCheckerCustomDictionary2.DictionaryPath = "dic\\en-US.dic";
+            spellCheckerCustomDictionary2.Encoding = ((System.Text.Encoding)(resources.GetObject("spellCheckerCustomDictionary2.Encoding")));
+            this.spellChecker1.Dictionaries.Add(spellCheckerDictionary1);
+            this.spellChecker1.Dictionaries.Add(spellCheckerCustomDictionary1);
+            this.spellChecker1.Dictionaries.Add(spellCheckerCustomDictionary2);
+            this.spellChecker1.LevenshteinDistance = 1;
+            this.spellChecker1.LookAndFeel.UseWindowsXPTheme = true;
+            this.spellChecker1.OptionsSpelling.CheckFromCursorPos = DevExpress.Utils.DefaultBoolean.False;
+            this.spellChecker1.OptionsSpelling.CheckSelectedTextFirst = DevExpress.Utils.DefaultBoolean.True;
+            this.spellChecker1.OptionsSpelling.IgnoreEmails = DevExpress.Utils.DefaultBoolean.True;
+            this.spellChecker1.OptionsSpelling.IgnoreUrls = DevExpress.Utils.DefaultBoolean.True;
+            this.spellChecker1.ParentContainer = this.document;
+            this.spellChecker1.SpellCheckMode = DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType;
             // 
             // urduWordProcessor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.zoomTrackBarControl1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.document);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.ribbonStatusBar);
+            this.IsMdiContainer = true;
             this.Name = "urduWordProcessor";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit3)).EndInit();
@@ -1072,7 +1149,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup formatRibbonPageGroup;
         private DevExpress.XtraBars.Ribbon.RibbonPage HelpRibbonPage;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup helpRibbonPageGroup;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox document;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup fontPageGroup;
         private DevExpress.XtraBars.Ribbon.RibbonPage InsertRibbonPage;
@@ -1135,7 +1212,11 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFacebook;
         private DevExpress.XtraBars.BarButtonGroup barButtonGroup2;
         private DevExpress.XtraBars.BarButtonItem keyboardSwitchBtn;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup keyboardPageGroup;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup languagePageGroup;
+        private DevExpress.XtraBars.BarButtonItem spellingsButtonItem;
+        private DevExpress.XtraSpellChecker.SpellChecker spellChecker1;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
 
     }
 }

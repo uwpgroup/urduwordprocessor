@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using UrduWordProcessor.Language;
+using NHunspell;
+using System.Drawing;
 
 namespace UrduWordProcessor
 {
@@ -24,6 +26,8 @@ namespace UrduWordProcessor
         FileSystemWatcher fontWatcher;
         FindBox findBox;
         ProcessKeyStrokes processKeyStrokes;
+
+        Hunspell spellChecker;
 
         private int indexOfSearchText = 0;
         private int start = 0;
@@ -48,10 +52,42 @@ namespace UrduWordProcessor
         // Method Declarations
 
         /// <summary>
+        /// This method checks the urdu spellings
+        /// </summary>
+        private void checkUrduSpell()
+        {
+            string lastWord = "";
+            int index = 0;
+            for (int i = document.TextLength - 1; i >= 0; i--)
+            {
+                if (document.Text[i] == ' ')
+                {
+                    index = i;
+                    break;
+                }
+            }
+            lastWord = document.Text.Substring(index);
+            
+            if (!spellChecker.Spell(lastWord))
+            {
+                document.SelectionStart = index;
+                document.SelectionLength = lastWord.Length;
+                document.SelectionColor = Color.Red;
+                document.DeselectAll();
+                document.SelectionStart = document.TextLength;
+                document.SelectionLength = 0;
+                document.SelectionColor = Color.Black;
+            }
+        } // end GetLastWord()
+
+        /// <summary>
         /// This method is used to register different events and initialize attributes
         /// </summary>
         private void registerEvents()
         {
+            spellChecker = new Hunspell("dic/ur.aff", "dic/ur.dic");
+            //spellChecker.Load("dic/ur.aff", "dic/ur.dic");
+            
             keyboardLayout = "phonetic";
             processKeyStrokes = new ProcessKeyStrokes();
             urduSelected = true;
@@ -71,7 +107,7 @@ namespace UrduWordProcessor
             fontWatcher = new FileSystemWatcher(@"fonts");
 
             // font size of the selected text should be shown in the font size combo box
-            richTextBox1.SelectionChanged += new EventHandler(richTextBox1_SelectionChanged);
+            document.SelectionChanged += new EventHandler(document_SelectionChanged);
 
             // keep an eye on fonts
             fontWatcher.Filter = ".ttf";
@@ -92,7 +128,7 @@ namespace UrduWordProcessor
         } // end registerEvents()
 
         /// <summary>
-        /// This method zooms the richTextBox1
+        /// This method zooms the document
         /// </summary>
         /// <param name="value">Value ranges from 1.0 - 63.0</param>
         private void zoomRichTB(float value)
@@ -101,14 +137,14 @@ namespace UrduWordProcessor
                 value = 1;
             else if (value >= 63)
                 value = 63;
-            richTextBox1.ZoomFactor = value;
+            document.ZoomFactor = value;
             zoomFactor = value;
         } // end zoomRichTB(float value)
 
         /// <summary>
-        /// This method finds the particular sub-string in the richTextBox1
+        /// This method finds the particular sub-string in the document
         /// </summary>
-        /// <param name="txtToSearch">Text to be searched in the richTextBox1</param>
+        /// <param name="txtToSearch">Text to be searched in the document</param>
         /// <param name="searchStart">The starting position of the string to be searched</param>
         /// <param name="searchEnd">The ending position of the string top be searched</param>
         /// <returns>The index of the matched string</returns>
@@ -117,7 +153,7 @@ namespace UrduWordProcessor
             // Unselect the previously searched string
             if (searchStart > 0 && searchEnd > 0 && indexOfSearchText >= 0)
             {
-                richTextBox1.Undo();
+                document.Undo();
             } // end if()
 
             // Set the return value to -1 by default.
@@ -131,8 +167,8 @@ namespace UrduWordProcessor
                 if (searchEnd > searchStart || searchEnd == -1)
                 {
                     // Find the position of search string in RichTextBox
-                    indexOfSearchText = richTextBox1.Find(txtToSearch, searchStart, searchEnd, RichTextBoxFinds.None);
-                    // Determine whether the text was found in richTextBox1.
+                    indexOfSearchText = document.Find(txtToSearch, searchStart, searchEnd, RichTextBoxFinds.None);
+                    // Determine whether the text was found in document.
                     if (indexOfSearchText != -1)
                     {
                         // Return the index to the specified search text.
@@ -186,41 +222,49 @@ namespace UrduWordProcessor
                     keyboardSwitchBtn.Caption = "Keyboard: English";
                 return true;
             }
-            if (keyData == Keys.Back || keyData == Keys.Space)
+            if(keyData == Keys.Back) // use default thingy
+                return base.ProcessCmdKey(ref msg, keyData);
+            if (keyData == Keys.Space) // for word segmentation
             {
+                checkUrduSpell();
                 return base.ProcessCmdKey(ref msg, keyData);
             }
             if (urduSelected)
             {
+                if (keyData == Keys.Space)
+                {
+                    MessageBox.Show("sdfdgh");
+                    
+                }
                 if (keyboardLayout.Equals("phonetic"))
                 {
                     if (keyData == Keys.I) // concatenate hamza and chotti yeh
                     {
-                        if (richTextBox1.Text.EndsWith("ء"))
+                        if (document.Text.EndsWith("ء"))
                         {
-                            richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.TextLength - 1);
-                            richTextBox1.AppendText("ئی");
+                            document.Text = document.Text.Substring(0, document.TextLength - 1);
+                            document.AppendText("ئی");
                         }
                         else
                         {
-                            richTextBox1.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
+                            document.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
                         }
                     }
                     else if (keyData == Keys.Y) // concatenate hamza and barri yeh
                     {
-                        if (richTextBox1.Text.EndsWith("ء"))
+                        if (document.Text.EndsWith("ء"))
                         {
-                            richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.TextLength - 1);
-                            richTextBox1.AppendText("ئے");
+                            document.Text = document.Text.Substring(0, document.TextLength - 1);
+                            document.AppendText("ئے");
                         }
                         else
                         {
-                            richTextBox1.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
+                            document.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
                         }
                     }
                     else
                     {
-                        richTextBox1.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
+                        document.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
                     }
                 }
                 return true;
@@ -253,9 +297,9 @@ namespace UrduWordProcessor
             fontCollection.AddFontFile(e.FullPath);
         }
 
-        void richTextBox1_SelectionChanged(object sender, EventArgs e)
+        void document_SelectionChanged(object sender, EventArgs e)
         {
-            selectionFontSize = richTextBox1.SelectionFont.Size;
+            selectionFontSize = document.SelectionFont.Size;
         }
 
         private void navBarControl_Click(object sender, EventArgs e)
@@ -310,9 +354,9 @@ namespace UrduWordProcessor
             char[] searchArr = findBox.searchTermsTxt.Text.ToCharArray();
             if(searchArr.Length > 0)
             {
-                int index = richTextBox1.Find(searchArr);
-                richTextBox1.Select(index, searchArr.Length);
-                //richTextBox1.
+                int index = document.Find(searchArr);
+                document.Select(index, searchArr.Length);
+                //document.
             }
             findBox = new FindBox();
             findBox.findSearchBtn.Click += new EventHandler(findBoxSearchBtn_Click);
@@ -324,13 +368,13 @@ namespace UrduWordProcessor
             int startIndex = 0;
 
             char[] term = findBox.searchTermsTxt.Text.ToCharArray();
-            startIndex = this.richTextBox1.Find(term, startIndex);
+            startIndex = this.document.Find(term, startIndex);
             
-            //richTextBox1.Select(startIndex, term.Length);
-            richTextBox1.SelectionStart = startIndex;
-            richTextBox1.SelectionLength = term.Length;
+            //document.Select(startIndex, term.Length);
+            document.SelectionStart = startIndex;
+            document.SelectionLength = term.Length;
             this.Select();
-            MessageBox.Show("Found: " + richTextBox1.Text.Substring(startIndex, term.Length));
+            MessageBox.Show("Found: " + document.Text.Substring(startIndex, term.Length));
         }
 
         private void barEditItem2_ItemClick(object sender, ItemClickEventArgs e)
@@ -351,7 +395,7 @@ namespace UrduWordProcessor
 
         private void barEditItemFontSIze_EditValueChanged(object sender, EventArgs e)
         {
-            //richTextBox1.SelectionFont = new Font(
+            //document.SelectionFont = new Font(
         }
 
         private void barEditItemFonts_ItemClick(object sender, ItemClickEventArgs e)
@@ -515,7 +559,7 @@ namespace UrduWordProcessor
             underConstruction();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void document_TextChanged(object sender, EventArgs e)
         {
             start = 0;
             indexOfSearchText = 0;
@@ -533,6 +577,15 @@ namespace UrduWordProcessor
                 urduSelected = !urduSelected;
                 keyboardSwitchBtn.Caption = "Keyboard: اُردو";
             }
+        }
+
+        private void spellingsButtonItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            document.SelectAll();
+            document.SelectionColor = Color.Black;
+            document.DeselectAll();
+            
+            spellChecker1.Check(document);
         }
     }
 }

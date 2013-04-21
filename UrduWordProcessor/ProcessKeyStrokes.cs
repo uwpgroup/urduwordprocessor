@@ -18,6 +18,11 @@ namespace UrduWordProcessor
             string data = "";
             switch (keyData)
             {
+                // other control keys
+                case Keys.Tab:
+                    data = "\t";
+                    break;
+
                 // If Shift key is pressed
                 case Keys.Y | Keys.Shift:   // ARABIC SIGN SANAH
                     data = "\u0601";

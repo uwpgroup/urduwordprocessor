@@ -40,4 +40,9 @@ C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\Facebook.dll
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\Facebook.xml
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\ur-PK\UrduWordProcessor.resources.dll
-C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.csprojResolveAssemblyReference.cache
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NetSpell.SpellChecker.dll
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NHunspell.dll
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NetSpell.SpellChecker.xml
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NHunspell.pdb
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NHunspell.xml
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\UrduCtrl.dll
