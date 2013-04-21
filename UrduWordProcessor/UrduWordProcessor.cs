@@ -194,7 +194,34 @@ namespace UrduWordProcessor
             {
                 if (keyboardLayout.Equals("phonetic"))
                 {
-                    richTextBox1.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
+                    if (keyData == Keys.I) // concatenate hamza and chotti yeh
+                    {
+                        if (richTextBox1.Text.EndsWith("ء"))
+                        {
+                            richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.TextLength - 1);
+                            richTextBox1.AppendText("ئی");
+                        }
+                        else
+                        {
+                            richTextBox1.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
+                        }
+                    }
+                    else if (keyData == Keys.Y) // concatenate hamza and barri yeh
+                    {
+                        if (richTextBox1.Text.EndsWith("ء"))
+                        {
+                            richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.TextLength - 1);
+                            richTextBox1.AppendText("ئے");
+                        }
+                        else
+                        {
+                            richTextBox1.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
+                        }
+                    }
+                    else
+                    {
+                        richTextBox1.AppendText(processKeyStrokes.ProcessPhoneticKeyboard(keyData));
+                    }
                 }
                 return true;
             } // end if (urduSelected)
