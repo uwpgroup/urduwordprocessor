@@ -25,11 +25,6 @@ namespace UrduWordProcessor
         FindBox findBox;
         ProcessKeyStrokes processKeyStrokes;
 
-<<<<<<< HEAD
-        FIndBox findBox;
-
-        public urduWordProcessor()
-=======
         private int indexOfSearchText = 0;
         private int start = 0;
 
@@ -38,7 +33,6 @@ namespace UrduWordProcessor
 
         // Method and constructor declarations
         public urduWordProcessor() // constructor
->>>>>>> Major - Standardized Urdu Input
         {
             InitializeComponent();
             InitSkinGallery();
@@ -235,19 +229,6 @@ namespace UrduWordProcessor
         void richTextBox1_SelectionChanged(object sender, EventArgs e)
         {
             selectionFontSize = richTextBox1.SelectionFont.Size;
-<<<<<<< HEAD
-            
-        }
-        
-        private void zoomRichTB( float value)
-        {
-            if (value < 1)
-                value = 1;
-            else if (value >= 63)
-                value = 63;
-            richTextBox1.ZoomFactor = value;
-=======
->>>>>>> Major - Standardized Urdu Input
         }
 
         private void navBarControl_Click(object sender, EventArgs e)
@@ -292,22 +273,20 @@ namespace UrduWordProcessor
 
         private void findribbongroup_ItemClick(object sender, ItemClickEventArgs e)
         {
-<<<<<<< HEAD
-            findBox = new FIndBox();
-            findBox.button1.Click += new EventHandler(FindBoxBtn_Click);
+            findBox = new FindBox();
+            findBox.findSearchBtn.Click += new EventHandler(FindBoxBtn_Click);
             findBox.Show();
         }
 
         void FindBoxBtn_Click(object sender, EventArgs e)
         {
-            char[] searchArr = findBox.textBox1.Text.ToCharArray();
+            char[] searchArr = findBox.searchTermsTxt.Text.ToCharArray();
             if(searchArr.Length > 0)
             {
                 int index = richTextBox1.Find(searchArr);
                 richTextBox1.Select(index, searchArr.Length);
                 //richTextBox1.
             }
-=======
             findBox = new FindBox();
             findBox.findSearchBtn.Click += new EventHandler(findBoxSearchBtn_Click);
             findBox.Show();
@@ -325,7 +304,6 @@ namespace UrduWordProcessor
             richTextBox1.SelectionLength = term.Length;
             this.Select();
             MessageBox.Show("Found: " + richTextBox1.Text.Substring(startIndex, term.Length));
->>>>>>> Major - Standardized Urdu Input
         }
 
         private void barEditItem2_ItemClick(object sender, ItemClickEventArgs e)

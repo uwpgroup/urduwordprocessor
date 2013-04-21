@@ -86,19 +86,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FIndBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FIndBox.Designer.cs">
-      <DependentUpon>FIndBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="FindBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FindBox.Designer.cs">
       <DependentUpon>FindBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Language\ProcessKeyStrokes.cs" />
+    <Compile Include="ProcessKeyStrokes.cs" />
     <Compile Include="SocialMedia\FacebookAuthentication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,8 +122,6 @@
     <Compile Include="UrduWordProcessor.Designer.cs">
       <DependentUpon>UrduWordProcessor.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FIndBox.resx">
-      <DependentUpon>FIndBox.cs</DependentUpon>
     <EmbeddedResource Include="FindBox.resx">
       <DependentUpon>FindBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +186,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Facebook.dll" />
+    <Content Include="lib\Facebook.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
