@@ -351,16 +351,8 @@ namespace UrduWordProcessor
 
         void FindBoxBtn_Click(object sender, EventArgs e)
         {
-            char[] searchArr = findBox.searchTermsTxt.Text.ToCharArray();
-            if(searchArr.Length > 0)
-            {
-                int index = document.Find(searchArr);
-                document.Select(index, searchArr.Length);
-                //document.
-            }
-            findBox = new FindBox();
-            findBox.findSearchBtn.Click += new EventHandler(findBoxSearchBtn_Click);
-            findBox.Show();
+            this.FindMyText(findBox.searchTermsTxt.Text, 0, document.TextLength - 1);
+            this.Select();
         }
 
         void findBoxSearchBtn_Click(object sender, EventArgs e)
