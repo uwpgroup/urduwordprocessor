@@ -46,3 +46,4 @@ C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NHunspell.pdb
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NHunspell.xml
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\UrduCtrl.dll
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.csprojResolveAssemblyReference.cache
