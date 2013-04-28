@@ -183,7 +183,7 @@ namespace UrduWordProcessor
         /// This method switched the current User Interface language between English
         /// and Urdu
         /// </summary>
-        private void changeUIText()
+        private static void changeUIText()
         {
             //MessageBox.Show(Settings.Default.CurrentLanguage);
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.CurrentLanguage);
@@ -193,7 +193,7 @@ namespace UrduWordProcessor
         /// <summary>
         /// This method shows the under-construction message box
         /// </summary>
-        private void underConstruction()
+        private static void underConstruction()
         {
             MessageBox.Show("This feature is currently underconstruction!");
         } // end underConstruction()
@@ -302,12 +302,12 @@ namespace UrduWordProcessor
             selectionFontSize = document.SelectionFont.Size;
         }
 
-        private void navBarControl_Click(object sender, EventArgs e)
+        private static void navBarControl_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureEdit_ItemClick(object sender, ItemClickEventArgs e)
+        private static void pictureEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }
@@ -322,7 +322,7 @@ namespace UrduWordProcessor
             underConstruction();
         }
 
-        private void barCheckItem1_CheckedChanged(object sender, ItemClickEventArgs e)
+        private static void barCheckItem1_CheckedChanged(object sender, ItemClickEventArgs e)
         {
 
         }
@@ -337,7 +337,7 @@ namespace UrduWordProcessor
 
         }
 
-        private void barEditItem3_ItemClick(object sender, ItemClickEventArgs e)
+        private static void barEditItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }
@@ -369,7 +369,7 @@ namespace UrduWordProcessor
             MessageBox.Show("Found: " + document.Text.Substring(startIndex, term.Length));
         }
 
-        private void barEditItem2_ItemClick(object sender, ItemClickEventArgs e)
+        private static void barEditItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }
@@ -385,12 +385,12 @@ namespace UrduWordProcessor
             zoomRichTB(value);
         }
 
-        private void barEditItemFontSIze_EditValueChanged(object sender, EventArgs e)
+        private static void barEditItemFontSIze_EditValueChanged(object sender, EventArgs e)
         {
             //document.SelectionFont = new Font(
         }
 
-        private void barEditItemFonts_ItemClick(object sender, ItemClickEventArgs e)
+        private static void barEditItemFonts_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }
@@ -434,8 +434,7 @@ namespace UrduWordProcessor
             }
             else
             {
-                FacebookAuthentication fa = new FacebookAuthentication();
-                fa.Type = "page";
+                FacebookAuthentication fa = new FacebookAuthentication() { Type = "page" };
                 fa.Show();
                 fa.LoadAuthorize();
             }

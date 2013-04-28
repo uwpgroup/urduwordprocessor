@@ -46,3 +46,20 @@ C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NHunspell.pdb
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\NHunspell.xml
 C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\UrduCtrl.dll
+C:\Users\Syed Tahir Ali Jan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.csprojResolveAssemblyReference.cache
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\bin\Debug\UrduWordProcessor.exe.config
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.exe
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.pdb
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.csprojResolveAssemblyReference.cache
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.FindBox.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.FacebookPublishForm.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.Options.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.FacebookAuthentication.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.Language.strings.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.Properties.Resources.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.urduWordProcessor.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.Options.ur-PK.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.Language.strings.ur-PK.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.urduWordProcessor.ur-PK.resources
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.csproj.GenerateResource.Cache
+C:\Users\M.Shahid.Sultan\Documents\GitHub\urduwordprocessor\UrduWordProcessor\obj\Debug\UrduWordProcessor.exe.licenses
